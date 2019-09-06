@@ -88,13 +88,13 @@ def millis():
     return time.time() * 1000
 
 
-def send_command(msg):
-    if getattr(send_command, 'last', None) == msg:
+def send_command(command):
+    if getattr(send_command, 'last', None) == command:
         return
 
-    state.arduino.write(msg)
-    print(msg)
-    send_command.last = msg
+    state.arduino.write(command)
+    print(command)
+    send_command.last = command
 
 
 def process_events():
