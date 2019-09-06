@@ -11,33 +11,68 @@ import threading
 
 
 class State:
+    # Url from which to retrieve the live feed.
     stream_url = 'http://192.168.0.162:9999/video/mjpeg'
+
+    # Serial port to which the Arduino is connected.
     serial_port = '/dev/ttyUSB0'
+
+    # Represents the serial interface.
     arduino = None
+
+    # Serial connection speed in baud.
     baud_rate = 9600
+
+    # Time to wait between turns in milliseconds.
     turn_duration = 5000
 
+    # Local render scale factor.
     display_scale = 0.75
 
+    # Expected dimensions of the video feed.
     frame_width = 720
     frame_height = 1280
+
+    # "Deadzone" around the frame that will be ignored.
     frame_margin = 90
 
+    # Image of the player used for template matching.
     player_figure = None
+
+    # Scale of the player template image (figure.png) in relation to the player size in the live feed.
     player_figure_scale = 0.75
+
+    # Center offset in pixels from the bottom of the player figure.
     player_base_offset = 20
+
+    # Offset from the top in pixels of where the player figure is expected to be.
     player_window_offset = 300
+
+    # Height of the window in pixels in which the player is expected to be.
     player_window_height = 200
+
+    # Player position (x, y) in pixels.
     player_position = (0, 0)
+
+    # Area in which the player is located (top-left corner, bottom-right corner) in pixels.
     player_bounds = (0, 0, 0, 0)
 
+    # Center of the platform (x, y) in pixels.
     platform_position = (0, 0)
 
+    # Duration of the current jump in milliseconds.
     tap_duration = 0
+
+    # Factor 'f' that determines the linear relationship between jump distance and duration.
     tap_multiplier = 2.45
+
+    # Constant servo delay 'c' in milliseconds that is added to each jump duration.
     tap_delay = 85
 
+    # Current frame.
     frame = None
+
+    # When changed to false, the bot will be terminated.
     running = True
 
 
