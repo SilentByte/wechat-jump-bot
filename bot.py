@@ -24,7 +24,7 @@ class State:
     baud_rate = 9600
 
     # Time to wait between turns in milliseconds.
-    turn_duration = 5000
+    turn_duration = 4000
 
     # Local render scale factor.
     display_scale = 0.75
@@ -193,7 +193,7 @@ def calculate_tap_duration():
 
 def perform_jump_thread():
     while state.running:
-        time.sleep(4)
+        time.sleep(state.turn_duration / 1000)
 
         start_time = millis()
         while millis() < start_time + state.tap_duration:
